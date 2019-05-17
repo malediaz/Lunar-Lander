@@ -35,29 +35,29 @@ void terreno_dibujar(float **terreno, SDL_Renderer *renderer, size_t n_puntos) {
   for (size_t i = 1; i < n_puntos; i++) {
       SDL_RenderDrawLine(
         renderer, 
-        terreno[i][0], 
-        terreno[i][1], 
         terreno[i - 1][0], 
-        terreno[i - 1][1]  
+       -terreno[i - 1][1] + VENTANA_ALTO, 
+        terreno[i][0], 
+       -terreno[i][1] + VENTANA_ALTO
      );
   }
 }
 
 //void dibujar_numero(double numero, float f, SDL_Renderer *renderer, int posicion_x, int posicion_y) {
 
-void nave_dibujar(nave_t nave, SDL_Renderer *renderer, size_t nave_tam, int posicion_x, int posicion_y, float escala) {
-  for(int i = 0; i < nave_tam - 1; i++) //Dsps debería reemplazar VENTANA_ANCHO por la posicion de la nave
+void figura_dibujar(float **figura, SDL_Renderer *renderer, size_t nave_tam, int posicion_x, int posicion_y, float escala) {
+  for(int i = 1; i < nave_tam; i++) //Dsps debería reemplazar VENTANA_ANCHO por la posicion de la nave
     SDL_RenderDrawLine(
 			renderer,
-			nave[i][0] * escala + posicion_x, //ESTA ES LA X
-     -nave[i][1] * escala + posicion_y,      //ESTA ES LA Y
-			nave[i+1][0] * escala + posicion_x,
-     -nave[i+1][1] * escala + posicion_y
+			figura[i - 1][0] * escala + posicion_x, //ESTA ES LA X
+     -figura[i - 1][1] * escala + posicion_y,      //ESTA ES LA Y
+			figura[i][0] * escala + posicion_x,
+     -figura[i][1] * escala + posicion_y
 		);
 }
 
 
-void chorro_dibujar(float chorro[3][2], SDL_Renderer *renderer, int posicion_x, int posicion_y, float escala) {
+/*void chorro_dibujar(float chorro[3][2], SDL_Renderer *renderer, int posicion_x, int posicion_y, float escala) {
   for(int i = 0; i < 3 - 1; i++) //Dsps debería reemplazar VENTANA_ANCHO por la posicion de la nave
     SDL_RenderDrawLine(
 			renderer,
@@ -67,4 +67,4 @@ void chorro_dibujar(float chorro[3][2], SDL_Renderer *renderer, int posicion_x, 
      -chorro[i+1][1] * escala + posicion_y
 		);
 }
-
+*/

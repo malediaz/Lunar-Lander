@@ -4,7 +4,7 @@
 #include "config.h"
 #include "terreno.h"
 
-#define COL 2
+#define CANT_COLS 2
 
 
 void vector_destruir(float **v ,size_t n ,size_t m) {
@@ -53,11 +53,11 @@ float rand_float(float p0, float p1) {
 float **vector_desde_matriz(const float m[][2], size_t n) {
   float **v = NULL;
 
-  if ((v = asignar_memoria(n, COL)) == NULL)
+  if ((v = asignar_memoria(n, CANT_COLS)) == NULL)
     return NULL;
    
   for (int i = 0; i < n; i++) { 
-    for(int j = 0; j < COL; j++)
+    for(int j = 0; j < CANT_COLS; j++)
       v[i][j] = m[i][j];
   }
   
@@ -120,7 +120,7 @@ void generar_coordenadas_random(float **v, float **vRand, size_t nv, size_t nn, 
   
   for(; i < nv; i++) {
     vRand[i][0] = v[i][0];
-    vRand[i][1] = v[i][1];
+    vRand[i][1] = v[i][1];          //Funcion copiar vector en densificar
   }
   
   for(; i < nn; i++){
@@ -140,7 +140,7 @@ void generar_coordenadas_random(float **v, float **vRand, size_t nv, size_t nn, 
 float **vector_densificar(float **v, size_t nv, size_t nn, float margen) {
   float **vDensif = NULL;
   
-  if ((vDensif = asignar_memoria(nn, COL)) == NULL)
+  if ((vDensif = asignar_memoria(nn, CANT_COLS)) == NULL)
     return NULL;
  
   generar_coordenadas_random(v, vDensif, nv, nn, margen);

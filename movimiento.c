@@ -1,9 +1,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include <math.h>
 
 #include "config.h"
 #include "movimiento.h"
+#include "terreno.h"
+
 
 double computar_velocidad(double vi ,double a ,double dt) {
   return vi + a * dt;
@@ -50,4 +53,4 @@ void vector_rotar(float **v, size_t n, double rad) {
     }
 }
 
-
+    
