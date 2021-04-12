@@ -7,8 +7,27 @@
 enum def_caracteres {
   A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V,
   W, X, Y, Z, N0, N1, N2, N3, N4, N5, N6, N7, N8, N9, DERECHA, 
-  IZQUIERDA, ARRIBA, ABAJO, ESPACIO};
+  IZQUIERDA, ARRIBA, ABAJO, ESPACIO, ESTRELLA};
   
+  
+const int caracter_estrella[16][2] = {
+  {0, 3},
+  {0, 0},
+  {1, 1},
+  {0, 0},
+  {2, 0},
+  {0, 0},
+  {1, -1},
+  {0, 0},
+  {0, -3},
+  {0, 0},
+  {-1, -1},
+  {0, 0},
+  {-2, 0},
+  {0, 0},
+  {-1, 1},
+  {0, 0}
+};
   
 char opciones_caracteres[] = {
   [A] = 'A', [B] = 'B', [C] = 'C', [D] = 'D',
@@ -21,7 +40,8 @@ char opciones_caracteres[] = {
   [N2] = '2', [N3] = '3', [N4] = '4', [N5] = '5',
   [N6] = '6', [N7] = '7', [N8] = '8', [N9] = '9',
   [DERECHA] = '>', [IZQUIERDA] = '<',
-  [ARRIBA] = '^', [ABAJO] = 'v', [ESPACIO] = ' '
+  [ARRIBA] = '^', [ABAJO] = 'v', [ESPACIO] = ' ',
+  [ESTRELLA] = '*'
 };
 
 vectores_t opciones_vectores[] = {
@@ -39,7 +59,7 @@ vectores_t opciones_vectores[] = {
   [N7] = caracter_7, [N8] = caracter_8, [N9] = caracter_9,
   [DERECHA] = caracter_derecha, [IZQUIERDA] = caracter_izquierda,
   [ARRIBA] = caracter_arriba, [ABAJO] = caracter_abajo,
-  [ESPACIO] = caracter_espacio
+  [ESPACIO] = caracter_espacio, [ESTRELLA] = caracter_estrella
 };
 
 
@@ -50,10 +70,10 @@ size_t longitud_cadena[] = {
   [V] = 3, [W] = 5, [X] = 5, [Y] = 5, [Z] = 4, [N0] = 5, [N1] = 2,
   [N2] = 6, [N3] = 7, [N4] = 5, [N5] = 6, [N6] = 5, [N7] = 3,
   [N8] = 7, [N9] = 5, [DERECHA] = 5, [IZQUIERDA] = 5, 
-  [ARRIBA] = 5, [ABAJO] = 5, [ESPACIO] = 1
+  [ARRIBA] = 5, [ABAJO] = 5, [ESPACIO] = 1, [ESTRELLA] = 16
 };
 
-size_t cantidad_caracteres = sizeof(opciones_caracteres) / sizeof(char);
+size_t cantidad_caracteres = sizeof(opciones_caracteres) / sizeof(opciones_caracteres[0]);
 
 
 vectores_t conversion_a_vector(char caracter) {

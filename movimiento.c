@@ -7,14 +7,18 @@
 #include "movimiento.h"
 #include "terreno.h"
 
+#define DT (1.0 / JUEGO_FPS)
+
 
 double computar_velocidad(double vi ,double a ,double dt) {
   return vi + a * dt;
 }
 
+
 double computar_posicion(double pi, double vi ,double dt) {
   return pi + vi * dt; 
 }
+
 
 bool vector_esta_arriba(float **v, size_t n, float x, float y) {
   for (int i = 1; i < n; i++) {
@@ -40,6 +44,7 @@ void vector_trasladar(float **v, size_t n, float dx, float dy) {
   }
 }
 
+
 void vector_rotar(float **v, size_t n, double rad) {
   float coseno = cos(rad), seno = sin(rad);
   float x, y;
@@ -52,5 +57,8 @@ void vector_rotar(float **v, size_t n, double rad) {
     v[i][1] = y;
     }
 }
+
+
+
 
     
